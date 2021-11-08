@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-#-------------------------------------------- Организации
+#-------------------------------------------- Организации ----------------------------------------
 class tb_Organizations(models.Model):
     Name = models.CharField("Наименование", max_length=100)
     FullName = models.CharField("Полное наименование", max_length=200, blank=True)
@@ -14,9 +14,9 @@ class tb_Organizations(models.Model):
         verbose_name = "Организация"
         verbose_name_plural = "Организации"
 
-#********************************
+#************************************************************************************************
 
-#-------------------------------------------- Типы ТС
+#-------------------------------------------- Типы ТС -------------------------------------------
 class tb_CarsTypes(models.Model):
     Name = models.CharField("Наименование", max_length=100)
     FullName = models.CharField("Полное наименование", max_length=200, blank=True)
@@ -29,7 +29,7 @@ class tb_CarsTypes(models.Model):
         verbose_name_plural = "Тип ТС"
 #************************************************************************************************
 
-#-------------------------------------------- Марки ТС
+#-------------------------------------------- Марки ТС ------------------------------------------
 class tb_MarksTypes(models.Model):
     Name = models.CharField("Наименование", max_length=100)
     FullName = models.CharField("Полное наименование", max_length=200, blank=True)
@@ -42,7 +42,7 @@ class tb_MarksTypes(models.Model):
         verbose_name_plural = "Марка ТС"
 #************************************************************************************************
 
-#-------------------------------------------- Список ТС
+#-------------------------------------------- Список ТС -----------------------------------------
 class tb_CarsList(models.Model):
     VIN = models.CharField("VIN номер", max_length=20, blank=True)
     GosNumber = models.CharField("Гос номер", max_length=20, blank=True)
@@ -61,7 +61,7 @@ class tb_CarsList(models.Model):
         verbose_name_plural = "Список ТС"
 #************************************************************************************************
 
-#-------------------------------------------- Производители оборудования
+#-------------------------------------------- Производители оборудования ------------------------
 class tb_Produsers(models.Model):
     Name = models.CharField("Наименование", max_length=100)
     FullName = models.CharField("Полное наименование", max_length=200, blank=True)
@@ -74,7 +74,7 @@ class tb_Produsers(models.Model):
         verbose_name_plural = "Производитель оборудования"
 #************************************************************************************************
 
-#-------------------------------------------- Типы оборудования
+#-------------------------------------------- Типы оборудования ---------------------------------
 class tb_DevicesTypes(models.Model):
     Name = models.CharField("Наименование", max_length=100)
     FullName = models.CharField("Полное наименование", max_length=200, blank=True)
@@ -87,7 +87,7 @@ class tb_DevicesTypes(models.Model):
         verbose_name_plural = "Тип оборудования"
 #************************************************************************************************
 
-#-------------------------------------------- Марки оборудования
+#-------------------------------------------- Марки оборудования --------------------------------
 class tb_DevicesMarks(models.Model):
     Name = models.CharField("Наименование", max_length=100)
 
@@ -102,10 +102,9 @@ class tb_DevicesMarks(models.Model):
         verbose_name_plural = "Марка оборудования"
 #************************************************************************************************
 
-#-------------------------------------------- Список оборудования
+#-------------------------------------------- Список оборудования -------------------------------
 class tb_DevicesList(models.Model):
     SerialNumber = models.CharField("Наименование", max_length=100)
-    tmp = models.CharField("Наименование", max_length=100)
     tb_DevicesMarks_id = models.ForeignKey(tb_DevicesMarks, verbose_name="Марка оборудования", on_delete=models.CASCADE)
 
     def __str__(self):
@@ -114,4 +113,16 @@ class tb_DevicesList(models.Model):
     class Meta:
         verbose_name = "Список устройств"
         verbose_name_plural = "Устройство"
+#************************************************************************************************
+
+#-------------------------------------------- Список статусов -----------------------------------
+class tb_Statuses(models.Model):
+    Name = models.CharField("Наименование", max_length=100)
+
+    def __str__(self):
+        return self.Name
+
+    class Meta:
+        verbose_name = "Список статусов"
+        verbose_name_plural = "Статус"
 #************************************************************************************************
